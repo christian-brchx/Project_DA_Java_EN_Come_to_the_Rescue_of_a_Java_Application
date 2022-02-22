@@ -1,52 +1,44 @@
 package com.hemebiotech.analytics;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class AnalyticsCounter {
-	private static int headacheCount = 0;
-	private static int rashCount = 0;
-	private static int pupilCount = 0;
 
 	public static void main(String args[]) throws Exception {
-		// first get input
-		try {
-			BufferedReader reader = new BufferedReader(new FileReader("Project02Eclipse/symptoms.txt"));
 
-			try {
+		final String NAMEOFINPUTFILE = "Project02Eclipse/symptoms.txt";
+		final String NAMEOFOUTPUTFILE = "Project02Eclipse/result.out";
 
-				String line = reader.readLine();
+		// Chargement du fichier sous forme de liste
+		ISymptomReader symptomReader = new ReadSymptomDataFromFile(NAMEOFINPUTFILE);
+		List<String> listOfSymptoms = symptomReader.GetSymptoms();
 
-				while (line != null) {
-					System.out.println("symptom from file: " + line);
-					if (line.equals("headache")) {
-						headacheCount++;
-						System.out.println("number of headaches: " + headacheCount);
-					} else if (line.equals("rash")) {
-						rashCount++;
-					} else if (line.contains("pupils")) {
-						pupilCount++;
-					}
+		// Remplissage de la TreeMap
+		Map<String, Integer> mapOfSymptoms = new TreeMap<String, Integer>();
 
-					line = reader.readLine(); // get another symptom
-				}
-			} catch (IOException e) {
-				System.out.println("Problème lecture fichier");
+		Integer count;
+		for (String list : listOfSymptoms) {
+			if (mapOfSymptoms.containsKey(list)) {
+				count = mapOfSymptoms.get(list) + 1;
+			} else {
+				count = 1;
 			}
-			reader.close();
-		} catch (FileNotFoundException e) {
-			System.out.println("Fichier en entrée non trouvé");
+			mapOfSymptoms.put(list, count);
 		}
-		// next generate output
+
+		// Ecriture de la TreeMap dans le fichier de sortie
+
 		try {
-			FileWriter writer = new FileWriter("Project02Eclipse/result.out");
+			FileWriter writer = new FileWriter(NAMEOFOUTPUTFILE);
 			try {
-				writer.write("headache: " + headacheCount + "\n");
-				writer.write("rash: " + rashCount + "\n");
-				writer.write("dialated pupils: " + pupilCount + "\n");
+				for (Map.Entry<String, Integer> entry : mapOfSymptoms.entrySet()) {
+					System.out.println(entry.getKey() + ": " + entry.getValue());
+					writer.write(entry.getKey() + ": " + entry.getValue() + "\n");
+				}
 			} catch (IOException e) {
 				System.out.println("Problème écriture fichier de sortie");
 			}
