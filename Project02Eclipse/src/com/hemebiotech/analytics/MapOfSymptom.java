@@ -1,14 +1,11 @@
 package com.hemebiotech.analytics;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 import java.util.TreeMap;
 
 /**
  * 
- * Class for counting and writing in a file a list of symptoms strings
+ * Class to convert a list of symptoms strings in a map
  */
 
 public class MapOfSymptom extends TreeMap<String, Integer> {
@@ -29,30 +26,6 @@ public class MapOfSymptom extends TreeMap<String, Integer> {
 				count = 1;
 			}
 			this.put(list, count);
-		}
-	}
-
-	/**
-	 * 
-	 * @param filepath a full or partial path to file
-	 */
-	public void WriteSymptomstoFile(String outputFile) {
-		try {
-			FileWriter writer = new FileWriter(outputFile);
-			try {
-				for (Map.Entry<String, Integer> entry : this.entrySet()) {
-					System.out.println(entry.getKey() + ": " + entry.getValue());
-					writer.write(entry.getKey() + ": " + entry.getValue() + "\n");
-				}
-			} catch (IOException e) {
-				System.out.println("Problème écriture fichier de sortie");
-				e.printStackTrace();
-			}
-
-			writer.close();
-		} catch (IOException e) {
-			System.out.println("Problème ouverture fichier de sortie");
-			e.printStackTrace();
 		}
 	}
 

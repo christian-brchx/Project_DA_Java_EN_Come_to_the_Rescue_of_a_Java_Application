@@ -9,16 +9,23 @@ public class AnalyticsCounter {
 		final String NAMEOFINPUTFILE = "Project02Eclipse/symptoms.txt";
 		final String NAMEOFOUTPUTFILE = "Project02Eclipse/result.out";
 
-		// Chargement du fichier sous forme de liste
-		ISymptomReader symptomReader = new ReadSymptomDataFromFile(NAMEOFINPUTFILE);
-		List<String> listOfSymptoms = symptomReader.GetSymptoms();
 
-		// Instanciation et remplissage de la Map contenant les symptômes
-		MapOfSymptom mapOfSymptoms = new MapOfSymptom();
-		mapOfSymptoms.CountSymptoms(listOfSymptoms);
+		try {
+			// Chargement du fichier sous forme de liste
+			ISymptomReader symptomReader = new ReadSymptomDataFromFile(NAMEOFINPUTFILE);
+			List<String> listOfSymptoms = symptomReader.GetSymptoms();
 
-		// Ecriture de la Map dans le fichier de sortie
-		mapOfSymptoms.WriteSymptomstoFile(NAMEOFOUTPUTFILE);
+			// Remplissage de la Map à partir de la liste contenant les symptômes et
+			// comptage
+			MapOfSymptom mapOfSymptoms = new MapOfSymptom();
+			mapOfSymptoms.CountSymptoms(listOfSymptoms);
 
+			// Ecriture de la Map dans le fichier de sortie
+			ISymptomWriter symptomWriter = new WriteSymptomDataToFile(NAMEOFOUTPUTFILE);
+			symptomWriter.WriteSymptoms(mapOfSymptoms);
+			System.out.println("Le traitement s'est exécuté correctement");
+		} catch (Exception e) {
+			System.out.println("Anomalie lors de l'exécution : " + e.getMessage());
+		}
 	}
 }
