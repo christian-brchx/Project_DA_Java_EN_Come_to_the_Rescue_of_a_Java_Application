@@ -21,10 +21,7 @@ public class WriteSymptomDataToFile implements ISymptomWriter {
 		this.filepath = filepath;
 	}
 
-	/**
-	 * 
-	 * @param Map of Symptoms to write to
-	 */
+	@Override
 	public void WriteSymptoms(MapOfSymptom map) throws Exception {
 		if ((filepath != null) && (map.size()) > 0) {
 			try {

@@ -2,13 +2,20 @@ package com.hemebiotech.analytics;
 
 import java.util.List;
 
+/**
+ * 
+ * Class entry of the program
+ */
 public class AnalyticsCounter {
 
-	public static void main(String args[]) throws Exception {
+	/**
+	 * 
+	 * @param args not used
+	 */
+	public static void main(String args[]) {
 
 		final String NAMEOFINPUTFILE = "Project02Eclipse/symptoms.txt";
 		final String NAMEOFOUTPUTFILE = "Project02Eclipse/result.out";
-
 
 		try {
 			// Chargement du fichier sous forme de liste

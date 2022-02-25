@@ -6,9 +6,8 @@ package com.hemebiotech.analytics;
  */
 public interface ISymptomWriter {
 	/**
-	 * If map is empty, write nothing
-	 * 
-	 * @param the instance of the MapOfSymptom to write
+	 * @param map : Map of Symptoms to write to
+	 * @throws Exception in case of issues to write in the file or if map is empty
 	 */
 	void WriteSymptoms(MapOfSymptom map) throws Exception;
 }

@@ -14,7 +14,7 @@ public class MapOfSymptom extends TreeMap<String, Integer> {
 
 	/**
 	 * 
-	 * @param list of symptoms strings
+	 * @param listOfSymptoms : list of symptoms strings
 	 */
 	public void CountSymptoms(List<String> listOfSymptoms) {
 
