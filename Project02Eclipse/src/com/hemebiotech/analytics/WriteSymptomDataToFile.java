@@ -33,8 +33,6 @@ public class WriteSymptomDataToFile implements ISymptomWriter {
 			} catch (IOException e) {
 				throw new Exception("Problème écriture fichier de sortie" + filepath);
 			}
-		} else {
-			throw new Exception("Fichier de sortie invalide ou aucun enregistrement à écrire");
 		}
 	}
 

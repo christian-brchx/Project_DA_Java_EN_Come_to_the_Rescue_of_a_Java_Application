@@ -30,7 +30,8 @@ public class AnalyticsCounter {
 			// Ecriture de la Map dans le fichier de sortie
 			ISymptomWriter symptomWriter = new WriteSymptomDataToFile(NAMEOFOUTPUTFILE);
 			symptomWriter.WriteSymptoms(mapOfSymptoms);
-			System.out.println("Le traitement s'est exécuté correctement");
+			System.out
+					.println("Fin traitement : " + mapOfSymptoms.size() + " symptômes écrits dans " + NAMEOFOUTPUTFILE);
 		} catch (Exception e) {
 			System.out.println("Anomalie lors de l'exécution : " + e.getMessage());
 		}
