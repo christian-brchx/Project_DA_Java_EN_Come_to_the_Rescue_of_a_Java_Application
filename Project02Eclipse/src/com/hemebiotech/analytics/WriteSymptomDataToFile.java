@@ -23,7 +23,7 @@ public class WriteSymptomDataToFile implements ISymptomWriter {
 
 	@Override
 	public void WriteSymptoms(MapOfSymptom map) throws Exception {
-		if ((filepath != null) && (map.size()) > 0) {
+		if (filepath != null) {
 			try {
 				FileWriter writer = new FileWriter(filepath);
 				for (Map.Entry<String, Integer> entry : map.entrySet()) {
