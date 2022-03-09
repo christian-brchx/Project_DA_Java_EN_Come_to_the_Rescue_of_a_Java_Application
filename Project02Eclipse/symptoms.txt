@@ -1,4 +1,5 @@
 fever
+malaria
 dialated pupils
 dry mouth
 inflamation
@@ -21,6 +22,7 @@ dry mouth
 tremor
 dry mouth
 arrhythmias
+malaria
 stomach pain
 anxiety
 dizziness

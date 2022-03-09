@@ -22,7 +22,7 @@ public class WriteSymptomDataToFile implements ISymptomWriter {
 	}
 
 	@Override
-	public void WriteSymptoms(MapOfSymptom map) throws Exception {
+	public void writeSymptoms(MapOfSymptom map) throws Exception {
 		if (filepath != null) {
 			try {
 				FileWriter writer = new FileWriter(filepath);

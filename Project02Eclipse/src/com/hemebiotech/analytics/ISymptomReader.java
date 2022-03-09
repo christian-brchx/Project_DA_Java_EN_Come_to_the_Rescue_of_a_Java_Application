@@ -18,5 +18,5 @@ public interface ISymptomReader {
 	 *         are possible/probable
 	 * @throws an Exception if can't open the file or can't read a line
 	 */
-	List<String> GetSymptoms() throws Exception;
+	List<String> getSymptoms() throws Exception;
 }
